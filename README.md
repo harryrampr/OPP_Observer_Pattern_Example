@@ -1,79 +1,65 @@
-## Project Templates for PHP Development
+## Observer Pattern (OOP) Example
 
-### When coding with PHP, it's important to have a good IDE and project templates with the tools you use all the time.
+We are sharing some simple PHP code, showing the use of the [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern). You will see how modern versions of PHP,
+supporting Classes and Abstract Classes, make it easy to implement the Observer Pattern using PHP.
 
-[PhpStorm](https://www.jetbrains.com/phpstorm/) is the best IDE I have ever used. Worth every penny since it helps to
-improve your coding quality, saving a lot
-of time during development, testing and maintenance. If you aren't using PhpStorm, we encourage you to test it [free for
-30 days](https://www.jetbrains.com/phpstorm/download/#section=windows).
+### About It
 
-We have curated a project template for PHP 8.1.x development. You don't need PhpStorm to use our template, just remove
-the`.idea`folder containing PhpStorm configuration.
+The Observer Pattern is a behavioral design pattern in [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) (OOP) that establishes a one-to-many
+dependency between objects. It defines a relationship where multiple observers (also known as subscribers or listeners) 
+are notified automatically when the subject (also known as the publisher or observable) undergoes a change in its state.
 
-#### Template Features:
+The Observer Pattern is a powerful tool for establishing communication and coordination between objects in a decoupled
+manner. It promotes separation of concerns, reusability, and flexibility by allowing objects to react to changes without 
+tightly coupling them to the subject.
 
-- PhpStorm initial project setup
-- Project's basic file structure
-- Composer Package Manager (latest)
-- File autoload (using composer)
-- Xdebug 3.x
-- phpUnit 9.x
-- MySQL (latest)
-- [Docker Containers](https://www.docker.com/products/docker-desktop/) LAMP for code testing
-- Support for initial database dump
-- Persistent data on database container
-- Support for Unit Testing with Coverage Report
-- Support for NPM Package Manager
-- Tailwind 3 CSS
+### History
+The Observer Pattern, also known as the [Publish-Subscribe Pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern), was first introduced by the software engineer and 
+computer scientist [Christopher Alexander](https://en.wikipedia.org/wiki/Christopher_Alexander) in his book ["A Pattern Language: Towns, Buildings, Construction"](https://en.wikipedia.org/wiki/A_Pattern_Language). The book, 
+published in 1977, explored patterns in architecture and urban design. Although Alexander's work primarily focused on 
+physical architecture, his concept of patterns influenced the field of software engineering.
 
-#### Installation:
+The concept of the Observer Pattern draws inspiration from the principles of [event-driven programming](https://en.wikipedia.org/wiki/Event-driven_programming), which has a 
+long history in computing. Event-driven programming is based on the idea of handling events or signals asynchronously,
+where objects can register themselves to receive notifications when specific events occur.
 
-1. Download or clone template from repository. To remove git's history from the template, run from Terminal or
-   Git Bash the following commands:
-   - `rm -rf .git`
-   - `git init`
-   - `git add -A`
-   - `git remote remove origin`
-   - `git commit -m "Initial commit"`
+### Intent
 
-2. Open project with PhpStorm and go to Settings->PHP, select the`Default PHP Interpreter`. Also, setup`Composer`execs
-   location.
+The Observer Pattern is used when there is a need for a loosely coupled communication between objects. It allows 
+multiple observers to monitor and react to changes in the state of a subject without tightly coupling the subject
+and the observers.
 
-3. Update necessary info at`composer.json`file, then run`composer install`.
+### Structure
+The main components of the Observer Pattern are the subject, observer, and optionally a concrete subject. The subject 
+is the object being observed, while the observer is the object that wants to be notified of the subject's changes. 
+The concrete subject is an implementation of the subject interface or class that holds the state and notifies the 
+observers about state changes.
 
-4. To configure the Docker LAMP, just copy sample`.env`files to new files without the "sample" prefix. Then only make
-   important changes to these files.
+### How it Works
+How it works: The observer objects register themselves with the subject to receive notifications. When the subject's 
+state changes, it notifies all registered observers, and they can react accordingly. The subject does not have explicit
+knowledge of the observers; it only knows that it needs to notify them when a change occurs.
 
-    1. For`.env`file, most defaults should work. If necessary replace values of:
-        - `SERVER_HTTP_HOST_PORT`
-        - `SERVER_HTTPS_HOST_PORT`
-        - `DB_CONTAINER_HOST_PORT`
-        - `DB_ROOT_PASSWORD`
-        - `DB_CONTAINER_VOLUME_NAME`(Must update)
-        - `DB_CONTAINER_VOLUME_EXTERNAL`
+### Benefits
 
-    2. For`app.env`file, most defaults should work. If necessary replace values of:
-        - `DATABASE_HOST`(Must update)
-        - `DATABASE_PORT`
-        - `DATABASE_USER_NAME`
-        - `DATABASE_USER_PASSWORD`
-        - `DATABASE_DB_NAME`
+- Supports loose coupling between the subject and observers, allowing for flexibility and extensibility.
+- Enables a one-to-many relationship between the subject and multiple observers.
+- Provides a way to notify objects without the need for direct dependencies or tight coupling.
+- Allows for dynamic addition and removal of observers at runtime.
 
-   ***Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for
-   DATABASE_HOST and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP
-   for
-   code testing, also allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
-5. Run `npm install` for the `node_modules` directory to be created at project root.
-6. Run all PHPUnit tests located at`app/tests`folder to verify template setup & containers configuration.
+### Applications
 
-7. Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of database
-   container.
+- **Event Handling and Event-driven Systems:** The Observer Pattern is widely used in event-driven systems, such as graphical user interfaces (GUIs) and web applications. It allows multiple observers to subscribe to events and be notified when those events occur. The pattern enables decoupled communication between event emitters and event handlers, facilitating modular and flexible architectures.
+- **Publish-Subscribe Systems:** The Observer Pattern is fundamental to publish-subscribe systems, where publishers produce messages or events, and subscribers consume or react to those messages. The pattern enables publishers to broadcast messages to multiple subscribers without the need for direct coupling or awareness of the subscribers. This is commonly seen in messaging systems, real-time data streams, and distributed architectures.
+- **Model-View-Controller (MVC) Architecture:** The Observer Pattern is central to the [MVC architectural pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). In MVC, the model represents the data and business logic, the view represents the user interface, and the controller acts as an intermediary between the model and view. Observers (views) register themselves with the model to receive updates when the model changes. This enables automatic synchronization of the views with the model's state.
+- **User Interface Components:** User interface libraries often utilize the Observer Pattern to handle events and user interactions. Each UI component can act as a subject that notifies registered observers (such as event handlers) when user actions or events occur. This allows for modular and reusable UI components that can be easily extended and customized.
+- **Logging and Monitoring Systems:** Observer Pattern can be employed in logging and monitoring systems, where observers subscribe to log entries or system events. Observers can perform various actions such as writing logs to files, sending notifications, aggregating statistics, or triggering alarms based on the received notifications.
+- **Databases and Data Binding:** Observer Pattern is utilized in data binding frameworks and database systems. Observers can register themselves with data sources or database entities to receive updates when the underlying data changes. This allows for automatic synchronization between data models and views, ensuring consistency and real-time updates.
+- **Stock Market Ticker Systems:** Observer Pattern can be applied in stock market ticker systems, where multiple clients or subscribers are interested in receiving real-time stock updates. Observers can subscribe to specific stocks and be notified when their prices or other related data change, enabling real-time market data dissemination.
 
-8. To start the LAMP containers, run these commands at IDE's Terminal:
+### Other Examples
 
-    - `docker compose build`
-    - `docker compose up -d`
-
-9. When necessary, run`docker compose down`to stop the containers.
-10. To update Tailwind changes,
-    run`npx tailwindcss -i ./app/src/css/tailwind_input.css -o ./app/public/css/main.css --watch`at IDE's Terminal.
+A common example of the Observer Pattern is a weather station that broadcasts weather updates to multiple displays. 
+Each display is an observer that automatically receives and shows the latest weather conditions without needing direct 
+communication with the weather station. It allows new displays to be easily added and existing ones to be removed, 
+providing a flexible and decoupled system for keeping multiple displays synchronized with the weather data.

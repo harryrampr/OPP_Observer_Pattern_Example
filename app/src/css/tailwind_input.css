@@ -3,8 +3,8 @@
     h1 {
         @apply text-2xl;
         @apply font-medium;
-        @apply mb-3;
-        @apply mt-3;
+        @apply mb-0;
+        @apply mt-6;
     }
 
     h2 {
@@ -23,8 +23,8 @@
 
     li {
         @apply text-lg;
-        @apply mt-2;
-        @apply ml-2;
+        @apply mt-0;
+        @apply ml-3;
     }
 }
 @tailwind components;
