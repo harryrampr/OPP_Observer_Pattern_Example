@@ -36,7 +36,7 @@ class Observer2 extends ObserverSuperClass
 
     public function display(): void
     {
-        echo '<h1>' . basename(get_class($this)). '</h1>' . PHP_EOL;
+        echo '<h1>' . basename(get_class($this)) . '</h1>' . PHP_EOL;
         if ($this->dataCount > 0) {
             echo sprintf("<ul>\n<li>Average Data1: %.3f</li>%s",
                 $this->accumulatedData1 / $this->dataCount, PHP_EOL);

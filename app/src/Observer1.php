@@ -34,7 +34,7 @@ class Observer1 extends ObserverSuperClass
 
     public function display(): void
     {
-        echo '<h1>' . basename(get_class($this)). '</h1>' . PHP_EOL;
+        echo '<h1>' . basename(get_class($this)) . '</h1>' . PHP_EOL;
         if (is_null($this->data1) || is_null($this->data2)) {
             echo sprintf("<ul>\n<li>Data1: %s</li>%s", 'Unknown', PHP_EOL);
             echo sprintf("<li>Data2: %s</li>\n</ul>%s", 'Unknown', PHP_EOL);

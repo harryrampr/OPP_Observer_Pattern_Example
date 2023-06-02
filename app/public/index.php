@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 </head>
 <body>
 <div class="container m-6">
-    <?php require_once __DIR__.'/../src/runObserver.php';?>
+    <?php require_once __DIR__ . '/../src/runObserver.php'; ?>
 </div>
 </body>
 </html>
